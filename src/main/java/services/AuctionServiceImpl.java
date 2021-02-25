@@ -1,6 +1,6 @@
 package services;
 
-import Exceptions.AuctionException;
+import exceptions.AuctionException;
 import business.Bid;
 import business.Buyer;
 import business.ObjectToAuction;
@@ -17,11 +17,7 @@ public class AuctionServiceImpl implements AuctionService {
     public AuctionResult getResult(ObjectToAuction objectToAuction) throws AuctionException {
         List<Bid> effectiveBids = getEffectiveBids(objectToAuction);
 
-        if(effectiveBids.size()<2) throw new AuctionException("You need to provide more bids above reserve !");
-
-        long distinctBuyers = getBuyersCountWithAnEffectiveBid(effectiveBids);
-
-        if (distinctBuyers < 2) throw new AuctionException("You need to provide more buyers !");
+        if(effectiveBids.isEmpty()) throw new AuctionException("No effective Bids !");
 
         Bid highestBid = getHighestBid(effectiveBids);
         Buyer highestBuyer = highestBid.getBuyer();
@@ -32,18 +28,10 @@ public class AuctionServiceImpl implements AuctionService {
     }
 
 
-
     private List<Bid> getEffectiveBids(ObjectToAuction objectToAuction) {
         return objectToAuction.getBids().stream()
-                .filter((b) -> b.getPrice() > objectToAuction.getReservedPrice())
+                .filter((b) -> b.getPrice() >= objectToAuction.getReservedPrice())
                 .collect(Collectors.toList());
-    }
-
-    private long getBuyersCountWithAnEffectiveBid(List<Bid> effectiveBids) {
-        return effectiveBids.stream()
-                .map(Bid::getBuyer)
-                .distinct()
-                .count();
     }
 
     private Bid getHighestBid(List<Bid> effectiveBids) {

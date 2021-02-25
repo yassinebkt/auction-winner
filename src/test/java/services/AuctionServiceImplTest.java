@@ -1,6 +1,6 @@
 package services;
 
-import Exceptions.AuctionException;
+import exceptions.AuctionException;
 import business.AuctionResult;
 import business.Buyer;
 import business.ObjectToAuction;
@@ -46,7 +46,7 @@ class AuctionServiceImplTest {
                 () -> auctionServiceImpl.getResult(objectToAuction)
         );
 
-        assertEquals("You need to provide more bids above reserve !", thrown.getMessage());
+        assertEquals("No effective Bids !", thrown.getMessage());
     }
 
     @Test
@@ -54,13 +54,15 @@ class AuctionServiceImplTest {
 
         ObjectToAuction objectToAuction = new ObjectToAuction(100);
         Buyer aBuyer = new Buyer("A");
+        Buyer cBuyer = new Buyer("C");
+
         objectToAuction.addNewBids(aBuyer, 120, 154);
 
         AuctionException thrown = assertThrows(
                 AuctionException.class,
-                () -> auctionServiceImpl.getResult(objectToAuction)
+                () -> objectToAuction.addNewBids(cBuyer, 120)
         );
 
-        assertEquals("You need to provide more buyers !", thrown.getMessage());
+        assertEquals("The bid you are entering : 120 has already been done by someone else !", thrown.getMessage());
     }
 }
