@@ -20,8 +20,7 @@ public class AuctionServiceImpl implements AuctionService {
         if(effectiveBids.isEmpty()) throw new AuctionException("No effective Bids !");
 
         Bid highestBid = getHighestBid(effectiveBids);
-        Buyer highestBuyer = highestBid.getBuyer();
-        Bid secondHighestBid = getSecondHighestBid(effectiveBids, highestBuyer);
+        Bid secondHighestBid = getSecondHighestBid(effectiveBids, highestBid.getBuyer());
 
         return new AuctionResult(objectToAuction, highestBid, secondHighestBid.getPrice());
 
