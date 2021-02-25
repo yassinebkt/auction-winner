@@ -32,7 +32,6 @@ public class ObjectToAuction {
                 throw new AuctionException("The bid you are entering : " + result.get().price  + " has already been done by someone else !");
             } else {
                 bids.add(new Bid(buyer, bidPrice));
-
             }
         }
     }

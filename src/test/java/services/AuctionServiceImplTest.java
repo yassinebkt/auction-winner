@@ -13,7 +13,7 @@ class AuctionServiceImplTest {
     AuctionServiceImpl auctionServiceImpl = new AuctionServiceImpl();
 
     @Test
-    public void testGetWinnerShouldSuccess() {
+    public void testGetResultShouldSuccess() {
 
         ObjectToAuction objectToAuction = new ObjectToAuction(100);
         Buyer aBuyer = new Buyer("A");
@@ -35,7 +35,7 @@ class AuctionServiceImplTest {
     }
 
     @Test
-    public void testGetShouldRaiseMoreBidException() {
+    public void testGetResultShouldRaiseNoEffectiveBIds() {
 
         ObjectToAuction objectToAuction = new ObjectToAuction(100);
         Buyer aBuyer = new Buyer("A");
@@ -50,7 +50,7 @@ class AuctionServiceImplTest {
     }
 
     @Test
-    public void testGetShouldRaiseMoreBuyerException() {
+    public void testGetResultShouldRaiseBidEntryException() {
 
         ObjectToAuction objectToAuction = new ObjectToAuction(100);
         Buyer aBuyer = new Buyer("A");
