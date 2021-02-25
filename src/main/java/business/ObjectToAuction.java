@@ -1,6 +1,6 @@
 package business;
 
-import exceptions.AuctionException;
+import exception.AuctionException;
 
 import java.util.ArrayList;
 import java.util.List;

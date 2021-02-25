@@ -1,7 +1,7 @@
-package services;
+package service;
 
 
-import exceptions.AuctionException;
+import exception.AuctionException;
 import business.ObjectToAuction;
 import business.AuctionResult;
 
