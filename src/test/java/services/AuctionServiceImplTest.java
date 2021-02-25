@@ -15,7 +15,7 @@ class AuctionServiceImplTest {
     @Test
     public void testGetWinnerShouldSuccess() {
 
-        ObjectToAuction objectToAuction = new ObjectToAuction(90);
+        ObjectToAuction objectToAuction = new ObjectToAuction(100);
         Buyer aBuyer = new Buyer("A");
         Buyer cBuyer = new Buyer("C");
         Buyer dBuyer = new Buyer("D");
@@ -39,7 +39,6 @@ class AuctionServiceImplTest {
 
         ObjectToAuction objectToAuction = new ObjectToAuction(100);
         Buyer aBuyer = new Buyer("A");
-        Buyer bBuyer = new Buyer("B");
         objectToAuction.addNewBids(aBuyer, 12);
 
         AuctionException thrown = assertThrows(

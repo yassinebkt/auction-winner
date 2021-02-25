@@ -1,6 +1,7 @@
 package business;
 
 public class AuctionResult {
+
     ObjectToAuction object;
     Bid winner;
     int price;
@@ -21,5 +22,14 @@ public class AuctionResult {
 
     public int getPrice() {
         return price;
+    }
+
+    @Override
+    public String toString() {
+        return "AuctionResult{" +
+                "object=" + object +
+                ", winner=" + winner +
+                ", price=" + price +
+                '}';
     }
 }

@@ -27,4 +27,5 @@ public class ObjectToAuction {
             bids.add(new Bid(buyer, bidPrice));
         }
     }
+
 }
