@@ -10,11 +10,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AuctionServiceImplTest {
 
+    AuctionServiceImpl auctionServiceImpl = new AuctionServiceImpl();
 
     @Test
     public void testGetWinnerShouldSuccess() {
-
-        AuctionServiceImpl auctionServiceImpl = new AuctionServiceImpl();
 
         ObjectToAuction objectToAuction = new ObjectToAuction(90);
         Buyer aBuyer = new Buyer("A");
@@ -38,9 +37,6 @@ class AuctionServiceImplTest {
     @Test
     public void testGetShouldRaiseMoreBidException() {
 
-        AuctionServiceImpl auctionServiceImpl = new AuctionServiceImpl();
-
-
         ObjectToAuction objectToAuction = new ObjectToAuction(100);
         Buyer aBuyer = new Buyer("A");
         Buyer bBuyer = new Buyer("B");
@@ -56,8 +52,6 @@ class AuctionServiceImplTest {
 
     @Test
     public void testGetShouldRaiseMoreBuyerException() {
-
-        AuctionServiceImpl auctionServiceImpl = new AuctionServiceImpl();
 
         ObjectToAuction objectToAuction = new ObjectToAuction(100);
         Buyer aBuyer = new Buyer("A");
